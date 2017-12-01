@@ -18,3 +18,7 @@ def aboutus(request):
 def contactus(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/contactus.html', {'posts': posts})
+
+def intro(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/intro.gif', {'posts': posts})
