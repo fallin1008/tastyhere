@@ -7,9 +7,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('blog.urls')),
 
-    url(r'^intro.gif/', views.intro),
-    url(r'', include('blog.urls')),
-
     url(r'^mapspage.html', views.mapspage),
     url(r'', include('blog.urls')),
 
