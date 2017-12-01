@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<html>
+  <head>
+   
+    <link href="https://fonts.googleapis.com/css?family=Acme|Amatic+SC" rel="stylesheet">
+<link href="http://fonts.googleapis.com/earlyaccess/hanna.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+
+  <meta charset="UTF-8">
+    <style>
+    body {
+    background: linear-gradient(30deg, #F7CAC9, #92A8D1) fixed;
+  }
+      #map {
+        height: 560px;
+        width: 1000px;
+       }
+      h1 {font-size: 70px;font-family: 'Acme', sans-serif;text-align: center; letter-spacing:2px; line-height: 40px}
+      h2 {font-size: 20px;color:black;text-align: center;font-family: 'Amatic SC', cursive;}
+    body {padding-left: 15px;}
+    button1 {letter-spacing:3px;}
+    button2 {padding-left: 350px;letter-spacing:3px}
+    button3 {padding-left: 1310px;font-family: 'Amatic SC', cursive;font-size: 20px;}
+    </style>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Tasty Here</title>
+
+  </head>
+  <body>
+    <br>
+ <button3> <a href="../post_list.html" style="text-decoration: none; color: black;">HOME</a></button3>
+
+<h1>TASTY HERE</h1>
+<br><br>
+
+
+ <center>
+    <div id="map"></div>
+
+
+<script>
+// JavaScript popup window function
+  function basicPopup(url) {
+popupWindow = window.open(url,'popUpWindow','height=1000,width=1000,left=50,top=50,resizable=no,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes')
+  }
+
+</script>
+
+
+    <script>
+      function initMap() {
+
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 5,
+    center: {lat: 48.8583701, lng: 2.2922926}
+  });
+
+
+
+  var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+  var transitLayer = new google.maps.TransitLayer();
+  transitLayer.setMap(map);
+
+   var markers = locations.map(function(location, i) {
+          return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length]
+          });
+        });
+
+
+var infoWin = new google.maps.InfoWindow();
+var markers = locations.map(function(location, i) {
+  var marker = new google.maps.Marker({
+    position: location
+  });
+  google.maps.event.addListener(marker, 'click', function(evt) {
+    infoWin.setContent(location.info);
+    infoWin.open(map, marker);
+  })
+  return marker;
+});
+
+
+
+
+ var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      }
+
+
+
+           var locations = [{lat: 48.8583701, lng: 2.2922926
+            ,info : '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">에펠탑</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>에펠탑</b>, 1889년 프랑스혁명 100돌 기념 파리 만국박람회(EXPO) 때 세워진 높이 약 320m의 격자형 철탑으로, 탑의 이름은 이 탑을 세운 프랑스 건축가인 에펠(Alexandre Gustave Eiffel 1832∼1923)의 이름에서 유래한다. 프랑스의 유명 건축가인 귀스타브 에펠은 뉴욕 <자유의 여신상>의 골격을 설계한 바 있다.' },
+
+      {lat: 50.0863859, lng: 14.4113516
+            ,info : '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">까를교</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>까를교</b>, 블타바 강 우안의 구시가지와 좌안 언덕 위에 우뚝 세워진 프라하 성을 연결해 주는 카렐교는 체코에서 가장 오래된 다리이자 유럽에서 가장 아름다운 다리 중 하나이다.' },
+
+      {lat: 50.0877395, lng: 14.4204967
+            ,info : '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">틴 성모 마리아 교회</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>틴 성모 마리아 교회</b>, 1365년 고딕 양식으로 건축한 교회로 성 비투스 대성당과 함께 프라하를 대표하는 종교 건축물로 꼽힌다. 작은 탑이 주변을 에워싸고 그 중앙에 우뚝 선 쌍탑이 인상적인데, 프라하 시내 어디에서든 보인다. 꼭대기가 금빛으로 빛나는 쌍탑은 높이가 80m로 높은 건물이 많지 않은 프라하에서 단연 눈에 띈다.' },
+
+      {lat: 50.0902197, lng: 14.3973905
+            ,info : '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">프라하성</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>프라하성</b>, 프라하의 성은 9세기 말경 보리보이 공에 의해 세워졌으며, 진흙과 돌로 된 단순한 성벽으로 해자에 둘러싸여 있었다. 세월이 흐르며 여러 차례 증축되어 프라하 성은 유럽에서 가장 큰 중세의 성채 단지가 된다. 성 내부에는 성 비투스 대성당과 수녀원 이외에도, 12세기에 로마네스크 양식으로 지어졌으며 200년 후 카를 4세의 주도 하에 고딕 양식으로 재건축된 왕궁의 유적이 있다.' },
+
+        {lat: 48.8606146, lng: 2.3354553
+            ,info : '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">루브르 박물관</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>루브르 박물관</b>, 루브르 박물관은 프랑스 파리의 중심가인 리볼리 가에 있는 국립 박물관이다. 다빈치의 모니라자, 니체의 승리의 여신상과 함께 소장품의 수와 질 면에서 메트로폴리탄 미술관 과 대영박물관와 함께 세계적으로 손꼽히는 박물관이다' },
+      
+      {lat: 48.8737952, lng: 2.2928388
+            ,info : '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">개선문</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>개선문</b>, 파리 중심부 수많은 도로의 중앙점이 되는 개선문은 에펠탑과 함께 파리를 대표하는 건물이다. 샤를 드골 에투알Charles de Gaulle -Étoile, 일명 개선문 광장 가운데에 위치해 있으며 샹젤리제 거리를 비롯해 12개의 도로가 사방으로 펼쳐져 있다. 도로의 모양이 별과 같다고 해서 에투알 광장이라고 불리던 광장은 군인이자 프랑스 전 대통령인 샤를 드 골의 사망 후 그를 추모하기 위해 샤를 드 골 에투알 광장이라는 공식 명칭으로 불리게 되었다.' },
+
+      {lat: 48.8529717, lng: 2.3477134
+            ,info : '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">노트르담 대성당</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>노트르담 대성당</b>, 노트르담 대성당은 거의 3세기에 걸쳐 만들어진 12세기 대표적인 고딕 건축물이다. 소설 노트르담의 꼽추의 배경지이기도 하다.' },
+
+      {lat: 48.8581164, lng: 2.2994048
+        ,info : '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Le Boulanger</h1>'+
+      '<div id="bodyContent">'+
+     
+      '<p><b>대표음식</b>,: 바케트 <p><b>가격</b> :  ₩2,300 ~ ₩18,000  <p><b>평점</b> :4.2'+
+
+     
+       '<p><a href="https://www.google.co.kr/maps/place/Le+Boulanger+des+Invalides/@48.8518486,2.3112861,17z/data=!3m1!4b1!4m7!3m6!1s0x47e67028e0ee4845:0xaaf24e219d14eb17!8m2!3d48.8518486!4d2.3134748!9m1!1b1?hl=ko"onclick="basicPopup(this.href);return false">'+ '리뷰 링크</a> '+
+       
+    
+       '<p><a href="https://www.google.co.kr/maps/dir/프랑스+파리+아나똘르+프랑스+가+에펠탑/Le+Boulanger+des+Invalides,+14+Avenue+de+Villars,+75007+Paris,+프랑스/@48.8549542,2.2954202,15z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x47e66e2964e34e2d:0x8ddca9ee380ef7e0!2m2!1d2.2944813!2d48.8583701!1m5!1m1!1s0x47e67028e0ee4845:0xaaf24e219d14eb17!2m2!1d2.3134748!2d48.8518486!3e2?hl=ko"onclick="basicPopup(this.href);return false">'+ '관광지 기준 길찾기</a> '
+},
+      {lat: 48.8610807, lng: 2.2965068
+      ,info : '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Les Ombres</h1>'+
+      '<div id="bodyContent">'+
+     
+      '<p><b>대표음식</b>,: shellfish foam <p><b>평균가격</b> :  ₩158,919  <p><b>평점</b> :4.0'+
+
+     
+       '<p><a href="https://www.google.co.kr/maps/place/Les+Ombres/@48.8610807,2.2965068,17z/data=!4m14!1m6!3m5!1s0x47e66fe0b42543c9:0xc6ce2c877f0b803!2sLes+Ombres!8m2!3d48.8610807!4d2.2986955!3m6!1s0x47e66fe0b42543c9:0xc6ce2c877f0b803!8m2!3d48.8610807!4d2.2986955!9m1!1b1?hl=ko"onclick="basicPopup(this.href);return false">'+ '리뷰 링크</a> '+
+       
+    
+       '<p><a href="https://www.google.co.kr/maps/dir/에펠탑+Champ+de+Mars,+5+Avenue+Anatole+France,+75007+Paris,+프랑스/Les+Ombres,+Quai+Branly,+Paris,+France/@48.8598963,2.2943408,17z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x47e66e2964e34e2d:0x8ddca9ee380ef7e0!2m2!1d2.2944813!2d48.8583701!1m5!1m1!1s0x47e66fe0b42543c9:0xc6ce2c877f0b803!2m2!1d2.2986955!2d48.8610807!3e2?hl=ko"onclick="basicPopup(this.href);return false">'+ '관광지 기준 길찾기</a> '
+
+       },
+      {lat: 48.8720706, lng: 2.3328801,info : '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Autour du Yangtse</h1>'+
+      '<div id="bodyContent">'+
+     
+      '<p><b>대표음식</b>,: 송아지 스테이크 <p><b>가격</b> :  ₩40,000 ~ ₩100,000  <p><b>평점</b> :4.2'+
+
+     
+       '<p><a href="https://www.google.co.kr/maps/place/Autour+du+Yangtse/@48.8720741,2.3328801,17z/data=!3m1!4b1!4m7!3m6!1s0x47e66e39fb29f15f:0x12f5bd9515a26a49!8m2!3d48.8720706!4d2.3350688!9m1!1b1?hl=ko"onclick="basicPopup(this.href);return false">'+ '리뷰 링크</a> '+
+       
+    
+       '<p><a href="https://www.google.co.kr/maps/dir/%ED%94%84%EB%9E%91%EC%8A%A4+%ED%8C%8C%EB%A6%AC+%ED%9E%88%EB%B3%BC%EB%A6%AC+%EA%B0%80+%EB%A3%A8%EB%B8%8C%EB%A5%B4+%EB%B0%95%EB%AC%BC%EA%B4%80/Autour+du+Yangtse,+12+Rue+du+Helder,+75009+Paris,+%ED%94%84%EB%9E%91%EC%8A%A4/@48.8663468,2.3273727,15z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x47e671d877937b0f:0xb975fcfa192f84d4!2m2!1d2.337644!2d48.8606111!1m5!1m1!1s0x47e66e39fb29f15f:0x12f5bd9515a26a49!2m2!1d2.3350688!2d48.8720706!3e2?hl=ko"onclick="basicPopup(this.href);return false">'+ '관광지 기준 길찾기</a> '
+},
+      {lat: 48.8603068, lng: 2.3391035,info : '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Le Louvre Ripaille</h1>'+
+      '<div id="bodyContent">'+
+     
+      '<p><b>대표음식</b>,: Roasted guineafowl with vegetalbes <p><b>가격</b> :  ₩50,000 ~ ₩90,000  <p><b>평점</b> : 4.2'+
+
+     
+       '<p><a href="https://www.google.co.kr/maps/place/Le+Louvre+Ripaille/@48.8603103,2.3391035,17z/data=!3m1!4b1!4m7!3m6!1s0x47e66e21720be1dd:0x722386582967c842!8m2!3d48.8603068!4d2.3412922!9m1!1b1?hl=ko"onclick="basicPopup(this.href);return false">'+ '리뷰 링크</a> '+
+       
+    
+       '<p><a href="https://www.google.co.kr/maps/dir/%ED%94%84%EB%9E%91%EC%8A%A4%ED%8C%8C%EB%A6%AC%ED%9E%88%EB%B3%BC%EB%A6%AC+%EA%B0%80%EB%A3%A8%EB%B8%8C%EB%A5%B4+%EB%B0%95%EB%AC%BC%EA%B4%80/Le+Louvre+Ripaille,+1+Rue+Perrault,+75001+Paris,+%ED%94%84%EB%9E%91%EC%8A%A4/@48.8603103,2.3391035,17z/data=!4m14!4m13!1m5!1m1!1s0x47e671d877937b0f:0xb975fcfa192f84d4!2m2!1d2.337644!2d48.8606111!1m5!1m1!1s0x47e66e21720be1dd:0x722386582967c842!2m2!1d2.3412922!2d48.8603068!3e2?hl=ko"onclick="basicPopup(this.href);return false">'+ '관광지 기준 길찾기</a> '},
+
+      {lat: 48.8588127, lng: 2.3438373,info :'<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Au Vieux Comptoir</h1>'+
+      '<div id="bodyContent">'+
+     
+      '<p><b>대표음식</b>,: 오리 가슴 살 구이 <p><b>가격</b> :  ₩40,000 ~ ₩100,000  <p><b>평점</b> :4.4'+
+
+     
+       '<p><a href="https://www.google.co.kr/maps/place/Au+Vieux+Comptoir/@48.8588162,2.3438373,17z/data=!4m7!3m6!1s0x47e66e1f0acb5181:0x8226746080cdda4d!8m2!3d48.8588127!4d2.346026!9m1!1b1?hl=ko"onclick="basicPopup(this.href);return false">'+ '리뷰 링크</a> '+
+       
+    
+       '<p><a href="https://www.google.co.kr/maps/dir/%ED%94%84%EB%9E%91%EC%8A%A4+%ED%8C%8C%EB%A6%AC+%ED%9E%88%EB%B3%BC%EB%A6%AC+%EA%B0%80+%EB%A3%A8%EB%B8%8C%EB%A5%B4+%EB%B0%95%EB%AC%BC%EA%B4%80/Au+Vieux+Comptoir,+17+Rue+des+Lavandi%C3%A8res+Sainte-Opportune,+75001+Paris,+%ED%94%84%EB%9E%91%EC%8A%A4/@48.8588162,2.3438373,17z/data=!4m14!4m13!1m5!1m1!1s0x47e671d877937b0f:0xb975fcfa192f84d4!2m2!1d2.337644!2d48.8606111!1m5!1m1!1s0x47e66e1f0acb5181:0x8226746080cdda4d!2m2!1d2.346026!2d48.8588127!3e2?hl=ko"onclick="basicPopup(this.href);return false">'+ '관광지 기준 길찾기</a> '},
+
+       {lat: 48.875426, lng: 2.2928373,info :'<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Café Latéral</h1>'+
+      '<div id="bodyContent">'+
+     
+      '<p><b>대표음식</b>,: 에스카르고 <p><b>가격</b> :   ₩50,000 ~ ₩90,000  <p><b>평점</b> :4.0'+
+
+     
+       '<p><a href="https://www.google.co.kr/maps/place/Caf%C3%A9+Lat%C3%A9ral/@48.8746124,2.2927007,17z/data=!4m24!1m16!4m15!1m6!1m2!1s0x47e66fec70fb1d8f:0xd9b5676e112e643d!2z7ZSE656R7IqkIO2MjOumrCDsg6Trpbwg65OcIOqzqCDqtJHsnqUg7JeQ7Yis7JWMIOqwnOyEoOusuA!2m2!1d2.2950275!2d48.8737917!1m6!1m2!1s0x47e66fec90030c97:0xb1228a64889a46d!2zQ2Fmw6kgTGF0w6lyYWwsIDQgQXZlbnVlIE1hYy1NYWhvbiwgNzUwMTcgUGFyaXMsIO2UhOuekeyKpA!2m2!1d2.295026!2d48.875426!3e2!3m6!1s0x47e66fec90030c97:0xb1228a64889a46d!8m2!3d48.875426!4d2.295026!9m1!1b1?hl=ko"onclick="basicPopup(this.href);return false">'+ '리뷰 링크</a> '+
+       
+    
+       '<p><a href="https://www.google.co.kr/maps/dir/%ED%94%84%EB%9E%91%EC%8A%A4+%ED%8C%8C%EB%A6%AC+%EC%83%A4%EB%A5%BC+%EB%93%9C+%EA%B3%A8+%EA%B4%91%EC%9E%A5+%EC%97%90%ED%88%AC%EC%95%8C+%EA%B0%9C%EC%84%A0%EB%AC%B8/Caf%C3%A9+Lat%C3%A9ral,+4+Avenue+Mac-Mahon,+75017+Paris,+%ED%94%84%EB%9E%91%EC%8A%A4/@48.8754295,2.2928373,17z/data=!4m14!4m13!1m5!1m1!1s0x47e66fec70fb1d8f:0xd9b5676e112e643d!2m2!1d2.2950275!2d48.8737917!1m5!1m1!1s0x47e66fec90030c97:0xb1228a64889a46d!2m2!1d2.295026!2d48.875426!3e2?hl=ko"onclick="basicPopup(this.href);return false">'+ '관광지 기준 길찾기</a> '},
+
+       {lat: 48.873586, lng: 2.2956123,info :'<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Le Chiberta</h1>'+
+      '<div id="bodyContent">'+
+     
+      '<p><b>대표음식</b>,: 필렛 스테이크 <p><b>가격</b> :   ₩70,000 ~ ₩100,000  <p><b>평점</b> :4.4'+
+
+     
+       '<p><a href="https://www.google.co.kr/maps/place/Le+Chiberta/@48.8738273,2.2955525,18z/data=!4m24!1m16!4m15!1m6!1m2!1s0x47e66fec70fb1d8f:0xd9b5676e112e643d!2z7ZSE656R7IqkIO2MjOumrCDsg6Trpbwg65OcIOqzqCDqtJHsnqUg7JeQ7Yis7JWMIOqwnOyEoOusuA!2m2!1d2.2950275!2d48.8737917!1m6!1m2!1s0x47e66febc9027b81:0xfc20748664cb8527!2zTGUgQ2hpYmVydGEsIDMgUnVlIEFyc8OobmUgSG91c3NheWUsIDc1MDA4IFBhcmlzLCDtlITrnpHsiqQ!2m2!1d2.297801!2d48.873586!3e2!3m6!1s0x47e66febc9027b81:0xfc20748664cb8527!8m2!3d48.873586!4d2.297801!9m1!1b1?hl=ko"onclick="basicPopup(this.href);return false">'+ '리뷰 링크</a> '+
+       
+    
+       '<p><a href="https://www.google.co.kr/maps/dir/%ED%94%84%EB%9E%91%EC%8A%A4+%ED%8C%8C%EB%A6%AC+%EC%83%A4%EB%A5%BC+%EB%93%9C+%EA%B3%A8+%EA%B4%91%EC%9E%A5+%EC%97%90%ED%88%AC%EC%95%8C+%EA%B0%9C%EC%84%A0%EB%AC%B8/Le+Chiberta,+3+Rue+Ars%C3%A8ne+Houssaye,+75008+Paris,+%ED%94%84%EB%9E%91%EC%8A%A4/@48.8735895,2.2956123,17z/data=!4m14!4m13!1m5!1m1!1s0x47e66fec70fb1d8f:0xd9b5676e112e643d!2m2!1d2.2950275!2d48.8737917!1m5!1m1!1s0x47e66febc9027b81:0xfc20748664cb8527!2m2!1d2.297801!2d48.873586!3e2?hl=ko"onclick="basicPopup(this.href);return false">'+ '관광지 기준 길찾기</a> '},
+
+       {lat: 48.8744903, lng: 2.2932572,info :'<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Le Hide</h1>'+
+      '<div id="bodyContent">'+
+     
+      '<p><b>대표음식</b>,: 연어 스테이크 <p><b>가격</b> :   ₩50,000 ~ ₩90,000  <p><b>평점</b> :4.4'+
+
+     
+       '<p><a href="https://www.google.co.kr/maps/place/Le+Hide/@48.8752255,2.292088,17z/data=!4m24!1m16!4m15!1m6!1m2!1s0x47e66fec70fb1d8f:0xd9b5676e112e643d!2z7ZSE656R7Iqk7YyM66as7IOk66W8IOuTnCDqs6gg6rSR7J6l7JeQ7Yis7JWMIOqwnOyEoOusuA!2m2!1d2.2950275!2d48.8737917!1m6!1m2!1s0x47e66fecc08a6bb9:0x2bd5754b93414350!2zTGUgSGlkZSwgMTAgUnVlIGR1IEfDqW7DqXJhbCBMYW5yZXphYywgNzUwMTcgUGFyaXMsIO2UhOuekeyKpA!2m2!1d2.294109!2d48.876228!3e2!3m6!1s0x47e66fecc08a6bb9:0x2bd5754b93414350!8m2!3d48.876228!4d2.294109!9m1!1b1?hl=ko"onclick="basicPopup(this.href);return false">'+ '리뷰 링크</a> '+
+       
+    
+       '<p><a href="https://www.google.co.kr/maps/place/Le+Hide/@48.8752255,2.292088,17z/data=!4m24!1m16!4m15!1m6!1m2!1s0x47e66fec70fb1d8f:0xd9b5676e112e643d!2z7ZSE656R7Iqk7YyM66as7IOk66W8IOuTnCDqs6gg6rSR7J6l7JeQ7Yis7JWMIOqwnOyEoOusuA!2m2!1d2.2950275!2d48.8737917!1m6!1m2!1s0x47e66fecc08a6bb9:0x2bd5754b93414350!2zTGUgSGlkZSwgMTAgUnVlIGR1IEfDqW7DqXJhbCBMYW5yZXphYywgNzUwMTcgUGFyaXMsIO2UhOuekeyKpA!2m2!1d2.294109!2d48.876228!3e2!3m6!1s0x47e66fecc08a6bb9:0x2bd5754b93414350!8m2!3d48.876228!4d2.294109!9m1!1b1?hl=ko"onclick="basicPopup(this.href);return false">'+ '관광지 기준 길찾기</a> '},
+
+       {lat: 48.8525674, lng: 2.3441708,info :'<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Le Procope</h1>'+
+      '<div id="bodyContent">'+
+     
+      '<p><b>대표음식</b>,: 해산물 모듬 요리 <p><b>가격</b> :   ₩21,000 ~ ₩60,000  <p><b>평점</b> :3.9'+
+
+     
+       '<p><a href="https://www.google.co.kr/maps/place/Le+Hide/@48.8752255,2.292088,17z/data=!4m24!1m16!4m15!1m6!1m2!1s0x47e66fec70fb1d8f:0xd9b5676e112e643d!2z7ZSE656R7Iqk7YyM66as7IOk66W8IOuTnCDqs6gg6rSR7J6l7JeQ7Yis7JWMIOqwnOyEoOusuA!2m2!1d2.2950275!2d48.8737917!1m6!1m2!1s0x47e66fecc08a6bb9:0x2bd5754b93414350!2zTGUgSGlkZSwgMTAgUnVlIGR1IEfDqW7DqXJhbCBMYW5yZXphYywgNzUwMTcgUGFyaXMsIO2UhOuekeyKpA!2m2!1d2.294109!2d48.876228!3e2!3m6!1s0x47e66fecc08a6bb9:0x2bd5754b93414350!8m2!3d48.876228!4d2.294109!9m1!1b1?hl=ko"onclick="basicPopup(this.href);return false">'+ '리뷰 링크</a> '+
+       
+    
+       '<p><a href="https://www.google.co.kr/maps/dir/%ED%94%84%EB%9E%91%EC%8A%A4%ED%8C%8C%EB%A6%ACParvis+Notre+Dame+-+Place+Jean-Paul+II%EB%85%B8%ED%8A%B8%EB%A5%B4%EB%8B%B4+%EB%8C%80%EC%84%B1%EB%8B%B9/Le+Procope,+13+Rue+de+lAncienne+Com%C3%A9die,+75006+Paris,+%ED%94%84%EB%9E%91%EC%8A%A4/@48.8526038,2.3397782,16z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x47e671e19ff53a01:0x36401da7abfa068d!2m2!1d2.3499021!2d48.8529682!1m5!1m1!1s0x47e671deccfb0975:0x2d2503c1a3d5a984!2m2!1d2.3388433!2d48.8530397!3e2?hl=ko"onclick="basicPopup(this.href);return false">'+ '관광지 기준 길찾기</a> '},
+
+       {lat: 48.8566516, lng: 2.3369122,info :'<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Restaurant Guy Savoy</h1>'+
+      '<div id="bodyContent">'+
+     
+      '<p><b>대표음식</b>,: Couleurs, Textures et Saveurs <p><b>가격</b> :   ₩510,000  <p><b>평점</b> :4.5'+
+
+     
+       '<p><a href="https://www.google.co.kr/maps/place/Restaurant+Guy+Savoy/@48.8548123,2.3401241,16z/data=!4m24!1m16!4m15!1m6!1m2!1s0x47e671e19ff53a01:0x36401da7abfa068d!2z7ZSE656R7Iqk7YyM66asUGFydmlzIE5vdHJlIERhbWUgLSBQbGFjZSBKZWFuLVBhdWwgSUnrhbjtirjrpbTri7Qg64yA7ISx64u5!2m2!1d2.3499021!2d48.8529682!1m6!1m2!1s0x47e66fec9f9184eb:0x240145c04a25b01f!2sRestaurant+Guy+Savoy,+Monnaie+de+Paris,+11+Quai+de+Conti,+75006+Paris,+%ED%94%84%EB%9E%91%EC%8A%A4!2m2!1d2.3391009!2d48.8566516!3e2!3m6!1s0x47e66fec9f9184eb:0x240145c04a25b01f!8m2!3d48.8566516!4d2.3391009!9m1!1b1?hl=ko"onclick="basicPopup(this.href);return false">'+ '리뷰 링크</a> '+
+       
+    
+       '<p><a href="https://www.google.co.kr/maps/dir/%ED%94%84%EB%9E%91%EC%8A%A4%ED%8C%8C%EB%A6%ACParvis+Notre+Dame+-+Place+Jean-Paul+II%EB%85%B8%ED%8A%B8%EB%A5%B4%EB%8B%B4+%EB%8C%80%EC%84%B1%EB%8B%B9/Restaurant+Guy+Savoy,+Monnaie+de+Paris,+11+Quai+de+Conti,+75006+Paris,+%ED%94%84%EB%9E%91%EC%8A%A4/@48.8566551,2.3369122,17z/data=!4m14!4m13!1m5!1m1!1s0x47e671e19ff53a01:0x36401da7abfa068d!2m2!1d2.3499021!2d48.8529682!1m5!1m1!1s0x47e66fec9f9184eb:0x240145c04a25b01f!2m2!1d2.3391009!2d48.8566516!3e2?hl=ko"onclick="basicPopup(this.href);return false">'+ '관광지 기준 길찾기</a> '},
+
+       {lat: 48.8537728, lng:2.3397608,info :'<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Au Bourguignon du Marais</h1>'+
+      '<div id="bodyContent">'+
+     
+      '<p><b>대표음식</b>,: 부르기뇽 <p><b>가격</b> :   ₩15,000 ~ ₩72,000  <p><b>평점</b> :4.2'+
+
+     
+       '<p><a href="https://www.google.co.kr/maps/place/Au+Bourguignon+du+Marais/@48.8554161,2.355351,17z/data=!3m1!4b1!4m24!1m16!4m15!1m6!1m2!1s0x47e671e19ff53a01:0x36401da7abfa068d!2z7ZSE656R7Iqk7YyM66asUGFydmlzIE5vdHJlIERhbWUgLSBQbGFjZSBKZWFuLVBhdWwgSUnrhbjtirjrpbTri7Qg64yA7ISx64u5!2m2!1d2.3499021!2d48.8529682!1m6!1m2!1s0x47e671fd65196a63:0xe84c235395093b65!2zQXUgQm91cmd1aWdub24gZHUgTWFyYWlzLCA1MiBSdWUgRnJhbsOnb2lzIE1pcm9uLCA3NTAwNCBQYXJpcywg7ZSE656R7Iqk!2m2!1d2.3575397!2d48.8554126!3e2!3m6!1s0x47e671fd65196a63:0xe84c235395093b65!8m2!3d48.8554126!4d2.3575397!9m1!1b1?hl=ko"onclick="basicPopup(this.href);return false">'+ '리뷰 링크</a> '+
+       
+    
+       '<p><a href="https://www.google.co.kr/maps/dir/%ED%94%84%EB%9E%91%EC%8A%A4%ED%8C%8C%EB%A6%ACParvis+Notre+Dame+-+Place+Jean-Paul+II%EB%85%B8%ED%8A%B8%EB%A5%B4%EB%8B%B4+%EB%8C%80%EC%84%B1%EB%8B%B9/Au+Bourguignon+du+Marais,+52+Rue+Fran%C3%A7ois+Miron,+75004+Paris,+%ED%94%84%EB%9E%91%EC%8A%A4/@48.8542888,2.3488726,16z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x47e671e19ff53a01:0x36401da7abfa068d!2m2!1d2.3499021!2d48.8529682!1m5!1m1!1s0x47e671fd65196a63:0xe84c235395093b65!2m2!1d2.3575397!2d48.8554126!3e2?hl=ko"onclick="basicPopup(this.href);return false">'+ '관광지 기준 길찾기</a> '},
+
+
+      {lat: 41.3947047, lng: 2.0083386,info : '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Example</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Example</b>, E X A M P L E' },
+ {lat: 41.5, lng: 2.1,info : "marker8"},
+ {lat: 41.39, lng: 2,info : "marker8"},
+
+{lat:  48.8038627, lng: 2.1,info : '<p><b>베르사유</b>, 베르사유는 프랑스 왕국의 옛 수도로 지금은 파리 근교의 고급 주택지로 되어 있다. 파리 서쪽 17.1 km에 자리하며, 이블린 주의 주도이다. 도시의 인구는 2004년 기준으로 89, 492명이 거주한다. 1975년까지만 해도 94,145명까지 살고 있었으나 현재는 인구가 조금씩 감소하고 있는 추세이다. 이 곳에 있는 루이 14세가 지은 베르사유 궁전은 세계적으로 널리 알려져 있다.'},
+{lat:  48.8038627, lng: 2.08,info :'<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Example</h1>'+
+      '<div id="bodyContent">'+
+     
+      '<p><b>대표음식</b>,: Example <p><b>가격</b> :  Example  <p><b>평점</b> :Example'+
+
+     
+       '<p><a href="https://www.google.co.kr/maps/place/Les+Ombres/@48.8610807,2.2965068,17z/data=!4m14!1m6!3m5!1s0x47e66fe0b42543c9:0xc6ce2c877f0b803!2sLes+Ombres!8m2!3d48.8610807!4d2.2986955!3m6!1s0x47e66fe0b42543c9:0xc6ce2c877f0b803!8m2!3d48.8610807!4d2.2986955!9m1!1b1?hl=ko"onclick="basicPopup(this.href);return false">'+ '리뷰 링크</a> '+
+       
+    
+       '<p><a href="https://www.google.co.kr/maps/dir/에펠탑+Champ+de+Mars,+5+Avenue+Anatole+France,+75007+Paris,+프랑스/Les+Ombres,+Quai+Branly,+Paris,+France/@48.8598963,2.2943408,17z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x47e66e2964e34e2d:0x8ddca9ee380ef7e0!2m2!1d2.2944813!2d48.8583701!1m5!1m1!1s0x47e66fe0b42543c9:0xc6ce2c877f0b803!2m2!1d2.2986955!2d48.8610807!3e2?hl=ko"onclick="basicPopup(this.href);return false">'+ '관광지 기준 길찾기</a> '},
+{lat:  51.5007292, lng: -0.125,info :'<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Example</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Example</b>, E X A M P L E' },
+{lat:  52.535716, lng: 13.387894,info :'<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Example</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Example</b>, E X A M P L E' },
+{lat:  52.535, lng: 13.3872501,info :'<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Example</h1>'+
+      '<div id="bodyContent">'+
+     
+      '<p><b>대표음식</b>,: Example <p><b>가격</b> :  Example  <p><b>평점</b> :Example'+
+
+     
+       '<p><a href="https://www.google.co.kr/maps/place/Les+Ombres/@48.8610807,2.2965068,17z/data=!4m14!1m6!3m5!1s0x47e66fe0b42543c9:0xc6ce2c877f0b803!2sLes+Ombres!8m2!3d48.8610807!4d2.2986955!3m6!1s0x47e66fe0b42543c9:0xc6ce2c877f0b803!8m2!3d48.8610807!4d2.2986955!9m1!1b1?hl=ko"onclick="basicPopup(this.href);return false">'+ '리뷰 링크</a> '+
+       
+    
+       '<p><a href="https://www.google.co.kr/maps/dir/에펠탑+Champ+de+Mars,+5+Avenue+Anatole+France,+75007+Paris,+프랑스/Les+Ombres,+Quai+Branly,+Paris,+France/@48.8598963,2.2943408,17z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x47e66e2964e34e2d:0x8ddca9ee380ef7e0!2m2!1d2.2944813!2d48.8583701!1m5!1m1!1s0x47e66fe0b42543c9:0xc6ce2c877f0b803!2m2!1d2.2986955!2d48.8610807!3e2?hl=ko"onclick="basicPopup(this.href);return false">'+ '관광지 기준 길찾기</a> '},
+{lat:  52.535558, lng: 13.387974,info :'<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Example</h1>'+
+      '<div id="bodyContent">'+
+     
+      '<p><b>대표음식</b>,: Example <p><b>가격</b> :  Example  <p><b>평점</b> :Example'+
+
+     
+       '<p><a href="https://www.google.co.kr/maps/place/Les+Ombres/@48.8610807,2.2965068,17z/data=!4m14!1m6!3m5!1s0x47e66fe0b42543c9:0xc6ce2c877f0b803!2sLes+Ombres!8m2!3d48.8610807!4d2.2986955!3m6!1s0x47e66fe0b42543c9:0xc6ce2c877f0b803!8m2!3d48.8610807!4d2.2986955!9m1!1b1?hl=ko"onclick="basicPopup(this.href);return false">'+ '리뷰 링크</a> '+
+       
+    
+       '<p><a href="https://www.google.co.kr/maps/dir/에펠탑+Champ+de+Mars,+5+Avenue+Anatole+France,+75007+Paris,+프랑스/Les+Ombres,+Quai+Branly,+Paris,+France/@48.8598963,2.2943408,17z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x47e66e2964e34e2d:0x8ddca9ee380ef7e0!2m2!1d2.2944813!2d48.8583701!1m5!1m1!1s0x47e66fe0b42543c9:0xc6ce2c877f0b803!2m2!1d2.2986955!2d48.8610807!3e2?hl=ko"onclick="basicPopup(this.href);return false">'+ '관광지 기준 길찾기</a> '},
+{lat:  50.087917, lng: 14.4198709,info :'<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Example</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Example</b>, E X A M P L E' },
+
+      {lat:  50.0593308 , lng: 14.1847516,info : '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Example</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Example</b>, E X A M P L E' },
+
+      {lat:  50.1, lng: 13.387974,info :'<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Example</h1>'+
+      '<div id="bodyContent">'+
+     
+      '<p><b>대표음식</b>,: Example <p><b>가격</b> :  Example  <p><b>평점</b> :Example'+
+
+     
+       '<p><a href="https://www.google.co.kr/maps/place/Les+Ombres/@48.8610807,2.2965068,17z/data=!4m14!1m6!3m5!1s0x47e66fe0b42543c9:0xc6ce2c877f0b803!2sLes+Ombres!8m2!3d48.8610807!4d2.2986955!3m6!1s0x47e66fe0b42543c9:0xc6ce2c877f0b803!8m2!3d48.8610807!4d2.2986955!9m1!1b1?hl=ko"onclick="basicPopup(this.href);return false">'+ '리뷰 링크</a> '+
+       
+    
+       '<p><a href="https://www.google.co.kr/maps/dir/에펠탑+Champ+de+Mars,+5+Avenue+Anatole+France,+75007+Paris,+프랑스/Les+Ombres,+Quai+Branly,+Paris,+France/@48.8598963,2.2943408,17z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x47e66e2964e34e2d:0x8ddca9ee380ef7e0!2m2!1d2.2944813!2d48.8583701!1m5!1m1!1s0x47e66fe0b42543c9:0xc6ce2c877f0b803!2m2!1d2.2986955!2d48.8610807!3e2?hl=ko"onclick="basicPopup(this.href);return false">'+ '관광지 기준 길찾기</a> '},
+
+
+
+
+
+
+
+
+        
+      ]
+
+
+
+</script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+   </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuvHOKpItTcF_L1AKmRIw6f0tSQKmv1iM&callback=initMap">
+    </script>
+</center>
+ <br><br><br><br>
+<h2>
+  <button1><a href="../aboutus.html" style="text-decoration: none; color: black;">ABOUT US</a></button1>
+  <button2><a href="../contactus.html" style="text-decoration: none; color: black;">CONTACT US</a></button2>
+</h2>
+
+  </body>
+</html>

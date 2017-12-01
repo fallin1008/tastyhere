@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Acme|Amatic+SC" rel="stylesheet">
+<link href="http://fonts.googleapis.com/earlyaccess/hanna.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+
+  <meta charset="UTF-8">
+    <style>
+    body {
+    background: linear-gradient(30deg, #F7CAC9, #92A8D1) fixed;
+  }
+      #map {
+        height: 560px;
+        width: 1000px;
+       }
+      h1 {font-size: 70px;font-family: 'Acme', sans-serif;text-align: center; letter-spacing:2px; line-height: 40px}
+      h2 {font-size: 20px;color:black;text-align: center;font-family: 'Amatic SC', cursive;}
+    body {padding-left: 15px;}
+    button1 {letter-spacing:3px;}
+    button2 {padding-left: 350px;letter-spacing:3px}
+    button3 {padding-left: 1310px;font-family: 'Amatic SC', cursive;font-size: 20px;}
+    </style>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Tasty Here</title>
+
+  </head>
+  <body>
+    <br>
+ <button3> <a href="../post_list.html" style="text-decoration: none; color: black;">HOME</a></button3>
+
+<h1>TASTY HERE</h1>
+<br><br>
+
+
+ <center>
+    <div id="map"></div>
+
+
+<script>
+// JavaScript popup window function
+  function basicPopup(url) {
+popupWindow = window.open(url,'popUpWindow','height=1000,width=1000,left=50,top=50,resizable=no,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes')
+  }
+
+</script>
+
+
+    <script>
+      function initMap() {
+
+
+      var Tour_Eiffel = {lat: 48.8583701, lng: 2.2922926};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    center: Tour_Eiffel
+  });
+var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    center: {lat: 48.8583701, lng: 2.2922926}
+  });
+
+
+
+  var transitLayer = new google.maps.TransitLayer();
+  transitLayer.setMap(map);
+
+  var contentString_1 = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+      'sandstone rock formation in the southern part of the '+
+      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+      'south west of the nearest large town, Alice Springs; 450&#160;km '+
+      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+      'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+      'Aboriginal people of the area. It has many springs, waterholes, '+
+      'rock caves and ancient paintings. Uluru is listed as a World '+
+      'Heritage Site.</p>'+
+      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+      '(last visited June 22, 2009).</p>'+
+      '</div>'+
+      '</div>';
+
+  var infowindow_1 = new google.maps.InfoWindow({
+    content: contentString_1
+  });
+
+  var marker_1 = new google.maps.Marker({
+    position: Tour_Eiffel,
+    map: map,
+    title: 'Uluru (Ayers Rock)'
+  });
+  marker_1.addListener('click', function() {
+    infowindow_1.open(map, marker_1);
+  });
+
+
+
+////////////////////////////////////////////////////////
+
+
+   var Café_Constant = {lat: 48.8581164, lng: 2.2994048};
+
+    var contentString_2 = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+      'sandstone rock formation in the southern part of the '+
+      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+      'south west of the nearest large town, Alice Springs; 450&#160;km '+
+      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+      'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+      'Aboriginal people of the a. It has many springs, waterholes, '+
+      'rock caves and ancient paintings. Uluru is listed as a World '+
+      'Heritage Site.</p>'+
+
+      '<p>Attribution: Uluru, <a href="https://www.google.co.kr/maps/dir/Les+Ombres/%EC%97%90%ED%8E%A0%ED%83%91+Champ+de+Mars,+5+Avenue+Anatole+France,+75007+Paris,+%ED%94%84%EB%9E%91%EC%8A%A4/@48.8604172,2.2931997,16z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x0:0xc6ce2c877f0b803!2m2!1d2.2986955!2d48.8610807!1m5!1m1!1s0x47e66e2964e34e2d:0x8ddca9ee380ef7e0!2m2!1d2.2944813!2d48.8583701!3e0?hl=ko"onclick="basicPopup(this.href);return false">'+
+      '에펠탑</a> '+
+
+      '<p>Attribution: Uluru, <a href="https://www.google.co.kr/maps/place/Les+Ombres/@48.8610807,2.2965068,17z/data=!3m1!4b1!4m7!3m6!1s0x47e66fe0b42543c9:0xc6ce2c877f0b803!8m2!3d48.8610807!4d2.298696!9m1!1b1?hl=ko">'+
+      'Review</a> '+
+      '(last visited June 22, 2009).</p>'+
+      '</div>'+
+      '</div>';
+
+  var infowindow_2 = new google.maps.InfoWindow({
+    content: contentString_2
+  });
+
+        var marker_2 = new google.maps.Marker({
+          position: Café_Constant,
+          map: map
+
+        });
+
+        marker_2.addListener('click', function() {
+    infowindow_2.open(map, marker_2);
+  });
+
+/////////////////////////////////////////////////////////
+
+
+
+/////////////////////////////////////
+
+
+
+var Les_Ombres = {lat: 48.8610807, lng: 2.2965068};
+
+    var contentString_4 = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+      'sandstone rock formation in the southern part of the '+
+      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+      'south west of the nearest large town, Alice Springs; 450&#160;km '+
+      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+      'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+      'Aboriginal people of the area. It has many springs, waterholes, '+
+      'rock caves and ancient paintings. Uluru is listed as a World '+
+      'Heritage Site.</p>'+
+      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+      '(last visited June 22, 2009).</p>'+
+      '</div>'+
+      '</div>';
+
+  var infowindow_4 = new google.maps.InfoWindow({
+    content: contentString_4
+  });
+
+        var marker_4 = new google.maps.Marker({
+          position: Les_Ombres,
+          map: map
+        });
+        marker_4.addListener('click', function() {
+    infowindow_4.open(map, marker_4);
+  });
+
+        //////////////////////////////////////////
+
+var London = {lat: 51.5283063, lng: -0.3824698};
+
+
+        var marker_London = new google.maps.Marker({
+          position: London,
+          map: map
+        });
+
+var Berlin = {lat: 52.5055139, lng: 12.8629303};
+
+
+        var marker_Berlin = new google.maps.Marker({
+          position: Berlin,
+          map: map
+        });
+
+var Rome = {lat: 41.9097289, lng: 12.2551195};
+
+
+        var marker_Rome = new google.maps.Marker({
+          position: Rome,
+          map: map
+        });
+
+var Bracelona = {lat: 41.3947047, lng: 2.0083386};
+
+
+        var marker_Barcelona = new google.maps.Marker({
+          position: Bracelona,
+          map: map
+        });
+
+
+        var Praha= {lat:  50.0593308 , lng: 14.1847516};
+
+
+        var marker_Praha = new google.maps.Marker({
+          position: Praha,
+          map: map
+        });
+
+
+var markerCluster = new MarkerClusterer(map, marker_London,marker_1,marker_4,marker_2,marker_Praha,marker_Barcelona,marker_Rome,marker_Berlin,
+            {imagePath: '/Users/anjaehyeon/Desktop/js-marker-clusterer-gh-pages/images/m1.png'});
+
+
+
+      }
+  </script>
+  <script src="/Users/anjaehyeon/Desktop/js-marker-clusterer-gh-pages/src/markerclusterer.js">
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuvHOKpItTcF_L1AKmRIw6f0tSQKmv1iM&callback=initMap">
+    </script>
+</center>
+ <br><br><br><br>
+<h2>
+  <button1><a href="../aboutus.html" style="text-decoration: none; color: black;">ABOUT US</a></button1>
+  <button2><a href="../contactus.html" style="text-decoration: none; color: black;">CONTACT US</a></button2>
+</h2>
+
+  </body>
+</html>
